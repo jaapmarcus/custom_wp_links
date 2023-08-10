@@ -1,0 +1,124 @@
+/* Begin Post Pagination */
+.wp-page-nav {
+		text-align: center;
+		line-height: 104px;
+		margin-bottom: 100px !important;
+		margin-top: 20px !important;
+		padding:10px;
+}
+
+.wp-page-nav {
+		clear: both;
+}
+
+.wp-page-nav a, .wp-page-nav a:hover {
+
+}
+
+.wp-page-nav a {
+}
+
+.wp-page-nav a {
+		line-height: 40px;
+		font-size: 30px;
+		font-family: arial;
+		font-weight: 600;
+		width: 46%;
+		padding: 21px 20px 19px 20px;
+		color: #1c2d41;
+}
+
+.wp-page-nav a, .wp-page-nav span {
+		text-decoration: none;
+		padding: 20px 10px;
+		margin: 2px;
+}
+
+.previouspostslink {
+		float: left;
+		width: 29% !important;
+		background-color: white;
+		color: #1c2d41;
+	border:0px;
+}
+
+.previouspostslink {
+		float: left;
+}
+
+.wp-page-nav span.current {
+		display: none !important;
+}
+
+.wp-page-nav span.current {
+		font-weight: bold;
+}
+
+.wp-page-nav a:hover, .wp-page-nav span.current {
+		border:0px;
+}
+
+.wp-page-nav a, .wp-page-nav span {
+		text-decoration: none;
+		border:0px;;
+		padding: 10px 10px;
+		margin: 2px;
+}
+
+.nextpostslink {
+		float: right;
+		width: 69% !important;
+		background-color:white;
+		color: #1c2d41;
+}
+
+.nextpostslink {
+		float: right;
+}
+
+.nextpostslink:hover {
+		color: #1c2d41;
+}
+
+.wp-page-nav-next {
+		float: right;
+		width: 69% !important;
+		margin: 0 !important;
+		padding: 12px 0px 12px 0px !important;
+		line-height: 32px;
+		font-size: 42px;
+		font-family: arial;
+		font-weight: 600;
+		margin-bottom: 25px;
+		margin-right: 0px;
+		width: 46%;
+		padding: 21px 0px 19px 0px !important;
+		color: #1c2d41;
+		border:0px;
+}
+
+.code-block-label{
+		font-size: 10px !important;
+}
+.divider span{
+		font-size: 10px !important;
+
+}
+
+@media only screen and (max-width: 786px){
+	.wp-page-nav a {
+			font-size:30px !important;
+						padding:10px;
+	}
+				.large-link{ display:none;}
+				.wp-page-nav a, .wp-page-nav span {
+		text-decoration: none;
+		border: 0px;
+		padding: 10px 10px;
+		margin: 0px;
+}
+}
+
+@media only screen and (min-width: 786px){
+		 .small-link{ display:none;}
+}
