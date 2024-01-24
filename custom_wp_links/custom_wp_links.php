@@ -3,7 +3,7 @@
 Plugin Name: custom_wp_links
 Plugin URI: https://schipbreukeling.nl
 Description:
-Version: 1.0.1
+Version: 1.1.0
 Author: Jaap Marcus
 Author URI: https://schipbreukeling.nl
 Text Domain: -
