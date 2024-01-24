@@ -53,7 +53,7 @@ class Custom_Wp_Links_Admin{
 						
 			add_settings_field('custom_wp_link_prev_page_color', 'Vorige pagina Achterground Kleur', array($this, 'custom_wp_link_prev_page_color'), $this->plugin::NAME, 'custom_wp_link_settings');
 			
-			add_settings_field('custom_wp_link_text_color', 'Vorige pagina Achterground Kleur', array($this, 'custom_wp_link_text_color'), $this->plugin::NAME, 'custom_wp_link_settings');
+			add_settings_field('custom_wp_link_text_color', 'Vorige pagina Tekst Kleur', array($this, 'custom_wp_link_text_color'), $this->plugin::NAME, 'custom_wp_link_settings');
 		}
 		
 		public function custom_wp_link_last_link(){

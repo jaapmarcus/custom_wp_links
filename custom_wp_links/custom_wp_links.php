@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
 class Custom_WP_links
 {
 	public const NAME = 'custom_wp_links';
-	public const VERSION = '1.0.1';
+	public const VERSION = '1.0.2';
 
 	private static $instance = null;
 	public static $plugin_basename = null;
