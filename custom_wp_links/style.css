@@ -2,8 +2,8 @@
 .wp-page-nav {
 		text-align: center;
 		line-height: 104px;
-		margin-bottom: 100px !important;
-		margin-top: 20px !important;
+		margin-bottom: 20px;
+		margin-top: 20px;
 		padding:10px;
 }
 
@@ -63,6 +63,13 @@
 		border:0px;;
 		padding: 10px 10px;
 		margin: 2px;
+}
+
+.lastpostlink {
+		width: 100% !important;
+		background-color: white;
+		color: #1c2d41;
+		display: block;
 }
 
 .nextpostslink {

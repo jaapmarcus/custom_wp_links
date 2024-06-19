@@ -52,13 +52,13 @@ class Custom_WP_links
 			$option = get_option('custom_wp_links');
 			echo "<style>";
 			if(!empty($option['nextcolor'])){
-				echo ".nextpostslink{ background-color: ".$option['nextcolor']." !important;}\n";
+				echo ".nextpostslink, .lastpostlink{ background-color: ".$option['nextcolor']." !important;}\n";
 			}
 			if(!empty($option['prevcolor'])){
 				echo ".previouspostslink{ background-color: ".$option['prevcolor']."  !important;;}\n";
 			}
 			if(!empty($option['textcolor'])){
-				echo ".previouspostslink, .nextpostslink{ color: ".$option['textcolor']." !important;}\n";
+				echo ".previouspostslink, .nextpostslink, .lastpostlink{ color: ".$option['textcolor']." !important;}\n";
 			}
 
 			echo "</style>"; 
@@ -110,12 +110,16 @@ class Custom_WP_links
 			);
 			
 			$option = get_option('custom_wp_links');
-			$default = array('lastlink' => '/trending/', 'prevpage' => '<<', 'nextpagelong' => 'Volgende Pagina >>', 'nextpageshort' => '>>');
+			
+			$default = array('lastlink' => '/trending/', 'lastlinktext' => 'Meer Artikelen' , 'prevpage' => '<<', 'nextpagelong' => 'Volgende Pagina >>', 'nextpageshort' => '>>');
 			$option = array_merge($default, $option);
 			$parsed_args = wp_parse_args($args, $defaults);
 			$my_current_lang = apply_filters( 'wpml_current_language', NULL );
+			
 			if (get_post_type() != 'page') {
-					?>
+				if($numpages > 1){
+?>
+
 			<div class="wp-page-nav" role="navigation">
 					<?php if ($page > 1) {
 							?>
@@ -128,14 +132,24 @@ class Custom_WP_links
 					<a class="nextpostslink small-link"  rel="next" aria-label="Next Page" href="<?php echo $this ->create_link($page +1); ?>"><?=$option['nextpageshort'];?></a>
 					<?php
 					}else{
+						$category = get_the_category();
 		?>
-					<a class="nextpostslink large-link" rel="next" aria-label="Next Page" href="<?=$option['lastlink'];?>"><?=$option['nextpagelong'];?></a>
-					<a class="nextpostslink small-link"  rel="next" aria-label="Next Page" href="<?=$option['lastlink'];?>"><?=$option['nextpageshort'];?></a>
+
+					<a class="nextpostslink large-link" rel="next" aria-label="Next Page" href="<?php echo $option['lastlink'];?>"><?=$option['lastlinktext'];?></a>
 					<?php
 		}
 		 ?>
 			</div>
 	<?php
+	
+	}else{
+		?>
+		<div class="wp-page-nav" role="navigation">
+		<a class="lastpostlink large-link" rel="next" aria-label="Next Page" href="<?php echo $option['lastlink'];?>"><?=$option['lastlinktext'];?></a>
+		<a class="lastpostlink small-link" rel="next" aria-label="Next Page" href="<?php echo $option['lastlink'];?>"><?=$option['lastlinktext'];?></a>
+		</div>
+		<?php
+	}	
 	}
 	}
 	
