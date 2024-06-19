@@ -48,7 +48,7 @@ class Custom_Wp_Links_Admin{
 			add_settings_field('custom_wp_link_text_next_page', 'Volgende pagina (Web)', array($this, 'custom_wp_link_text_next_page'), $this->plugin::NAME, 'custom_wp_link_settings');
 			add_settings_field('custom_wp_link_text_next_page_short', 'Volgende pagina (Mob)', array($this, 'custom_wp_link_text_next_page_short'), $this->plugin::NAME, 'custom_wp_link_settings');
 			add_settings_field('custom_wp_link_text_prev_page', 'Vorige pagina', array($this, 'custom_wp_link_text_prev_page'), $this->plugin::NAME, 'custom_wp_link_settings');
-			
+			add_settings_field('custom_wp_link_text_last_link', 'Text "Lees meer"', array($this, 'custom_wp_link_lastlinktext'), $this->plugin::NAME, 'custom_wp_link_settings');
 			add_settings_field('custom_wp_link_next_page_color', 'Volgende pagina Achterground Kleur', array($this, 'custom_wp_link_next_page_color'), $this->plugin::NAME, 'custom_wp_link_settings');
 						
 			add_settings_field('custom_wp_link_prev_page_color', 'Vorige pagina Achterground Kleur', array($this, 'custom_wp_link_prev_page_color'), $this->plugin::NAME, 'custom_wp_link_settings');
@@ -79,6 +79,12 @@ class Custom_Wp_Links_Admin{
 			echo '<input id="custom_wp_link_text_next_page" name="' . $this->plugin::NAME . '[prevpage]" type="text" value="' . $prevpage . '" />';
 		}
 		
+		public function custom_wp_link_lastlinktext(){
+			$options = get_option($this->plugin::NAME);
+			$lastlinktext = $this->plugin::$is_configured ? esc_attr($options["lastlinktext"]) : "";
+			echo '<input id="custom_wp_link_text_next_page" name="' . $this->plugin::NAME . '[lastlinktext]" type="text" value="' . $lastlinktext . '" />';
+		}
+
 		public function custom_wp_link_next_page_color(){
 			$options = get_option($this->plugin::NAME);
 			$nextcolor = $this->plugin::$is_configured ? esc_attr($options["nextcolor"]) : "";
