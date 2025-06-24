@@ -121,6 +121,7 @@ class Custom_WP_links
 ?>
 
 			<div class="wp-page-nav" role="navigation">
+				<?php 					var_dump($option['categorylastlink']);?>
 					<?php if ($page > 1) {
 							?>
 					<a class="previouspostslink" rel="prev" aria-label="Previous Page" href="<?php echo $this ->create_link($page - 1); ?>"><?=$option['prevpage'];?></a>
@@ -134,12 +135,19 @@ class Custom_WP_links
 					}else{
 					$category = get_the_category();
 					$cat_id = $category[0]->cat_ID;
+
+					if(!is_array($option['categorylastlink'])){
+						?>
+					<a class="nextpostslink large-link" rel="next" aria-label="Next Page" href="<?php echo $option['lastlink'];?>"><?=$option['lastlinktext'];?></a>
+					<a class="nextpostslink small-link"  rel="next" aria-label="Next Page" href="<?php echo $option['lastlink'];?>"><?=$option['lastlinktext'];?></a>
+						<?php
+					}else{
 					if(in_array($cat_id, $option['categorylastlink'])){
 					?>
-
-<a class="nextpostslink large-link" rel="next" aria-label="Next Page" href="<?php echo $option['lastlink'];?>"><?=$option['lastlinktext'];?></a>
-<a class="nextpostslink small-link"  rel="next" aria-label="Next Page" href="<?php echo $option['lastlink'];?>"><?=$option['lastlinktext'];?></a>
+					<a class="nextpostslink large-link" rel="next" aria-label="Next Page" href="<?php echo $option['lastlink'];?>"><?=$option['lastlinktext'];?></a>
+					<a class="nextpostslink small-link"  rel="next" aria-label="Next Page" href="<?php echo $option['lastlink'];?>"><?=$option['lastlinktext'];?></a>
 					<?php }
+					}
 		}
 		 ?>
 			</div>
