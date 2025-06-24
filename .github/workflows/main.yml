@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Create temporary artifact folder
       run: mkdir artifacts
@@ -22,7 +22,7 @@ jobs:
       run: zip -o artifacts/custom_wp_links.zip -r custom_wp_links
 
     - name: Upload artifacts for workflow
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with: 
           name: artifacts
           path: artifacts
