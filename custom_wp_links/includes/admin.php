@@ -44,18 +44,30 @@ class Custom_Wp_Links_Admin{
 			);
 		
 			add_settings_section('custom_wp_link_settings', 'Custom WP Link Settings', '', $this->plugin::NAME);
-			add_settings_field('custom_wp_link_last_link', 'Laatste link', array($this, 'custom_wp_link_last_link'), $this->plugin::NAME, 'custom_wp_link_settings');
 			add_settings_field('custom_wp_link_text_next_page', 'Volgende pagina (Web)', array($this, 'custom_wp_link_text_next_page'), $this->plugin::NAME, 'custom_wp_link_settings');
 			add_settings_field('custom_wp_link_text_next_page_short', 'Volgende pagina (Mob)', array($this, 'custom_wp_link_text_next_page_short'), $this->plugin::NAME, 'custom_wp_link_settings');
 			add_settings_field('custom_wp_link_text_prev_page', 'Vorige pagina', array($this, 'custom_wp_link_text_prev_page'), $this->plugin::NAME, 'custom_wp_link_settings');
+			add_settings_field('custom_wp_link_last_link', 'URL Laatste link', array($this, 'custom_wp_link_last_link'), $this->plugin::NAME, 'custom_wp_link_settings');
 			add_settings_field('custom_wp_link_text_last_link', 'Text "Lees meer"', array($this, 'custom_wp_link_lastlinktext'), $this->plugin::NAME, 'custom_wp_link_settings');
+			add_settings_field('custom_wp_link_category_last_link', 'Laats "Lees" meer alleen zien op Categorie', array($this, 'custom_wp_link_categorylastlink'), $this->plugin::NAME, 'custom_wp_link_settings');
 			add_settings_field('custom_wp_link_next_page_color', 'Volgende pagina Achterground Kleur', array($this, 'custom_wp_link_next_page_color'), $this->plugin::NAME, 'custom_wp_link_settings');
-						
 			add_settings_field('custom_wp_link_prev_page_color', 'Vorige pagina Achterground Kleur', array($this, 'custom_wp_link_prev_page_color'), $this->plugin::NAME, 'custom_wp_link_settings');
-			
 			add_settings_field('custom_wp_link_text_color', 'Vorige pagina Tekst Kleur', array($this, 'custom_wp_link_text_color'), $this->plugin::NAME, 'custom_wp_link_settings');
 		}
 		
+		public function custom_wp_link_categorylastlink(){
+			$options = get_option($this->plugin::NAME);
+			$lastlink = $this->plugin::$is_configured ? $options["categorylastlink"] : array();
+			if($lastlink == "")
+				$lastlink = array();
+
+			$categories = get_categories(array('hide_empty' => 0));
+			echo '<select id="custom_wp_link_category_last_link" name="' . $this->plugin::NAME . '[categorylastlink][]" multiple>';	
+			foreach($categories as $category){
+				$selected = in_array( $category->term_id, $lastlink,) ? 'selected' : '';
+				echo '<option value="' . $category->term_id . '" ' . $selected . '>' . $category->name . '</option>';
+			}
+		}
 		public function custom_wp_link_last_link(){
 			$options = get_option($this->plugin::NAME);
 			$lastlink = $this->plugin::$is_configured ? esc_attr($options["lastlink"]) : "";

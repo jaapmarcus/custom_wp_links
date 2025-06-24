@@ -3,7 +3,7 @@
 Plugin Name: custom_wp_links
 Plugin URI: https://schipbreukeling.nl
 Description:
-Version: 1.1.0
+Version: 1.1.1
 Author: Jaap Marcus
 Author URI: https://schipbreukeling.nl
 Text Domain: -
@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
 class Custom_WP_links
 {
 	public const NAME = 'custom_wp_links';
-	public const VERSION = '1.0.2';
+	public const VERSION = '1.1.1';
 
 	private static $instance = null;
 	public static $plugin_basename = null;
@@ -132,23 +132,30 @@ class Custom_WP_links
 					<a class="nextpostslink small-link"  rel="next" aria-label="Next Page" href="<?php echo $this ->create_link($page +1); ?>"><?=$option['nextpageshort'];?></a>
 					<?php
 					}else{
-						$category = get_the_category();
-		?>
+					$category = get_the_category();
+					$cat_id = $category[0]->cat_ID;
+					if(in_array($cat_id, $option['categorylastlink'])){
+					?>
 
-					<a class="nextpostslink large-link" rel="next" aria-label="Next Page" href="<?php echo $option['lastlink'];?>"><?=$option['lastlinktext'];?></a>
-					<?php
+<a class="nextpostslink large-link" rel="next" aria-label="Next Page" href="<?php echo $option['lastlink'];?>"><?=$option['lastlinktext'];?></a>
+<a class="nextpostslink small-link"  rel="next" aria-label="Next Page" href="<?php echo $option['lastlink'];?>"><?=$option['lastlinktext'];?></a>
+					<?php }
 		}
 		 ?>
 			</div>
 	<?php
 	
 	}else{
-		?>
-		<div class="wp-page-nav" role="navigation">
-		<a class="lastpostlink large-link" rel="next" aria-label="Next Page" href="<?php echo $option['lastlink'];?>"><?=$option['lastlinktext'];?></a>
-		<a class="lastpostlink small-link" rel="next" aria-label="Next Page" href="<?php echo $option['lastlink'];?>"><?=$option['lastlinktext'];?></a>
-		</div>
-		<?php
+		$category = get_the_category();
+					$cat_id = $category[0]->cat_ID;
+					if(in_array($cat_id, $option['categorylastlink'])){
+
+					?>
+				<div class="wp-page-nav" role="navigation">
+				<a class="lastpostlink large-link" rel="next" aria-label="Next Page" href="<?php echo $option['lastlink'];?>"><?=$option['lastlinktext'];?></a>
+				<a class="lastpostlink small-link"  rel="next" aria-label="Next Page" href="<?php echo $option['lastlink'];?>"><?=$option['lastlinktext'];?></a>
+				</div>
+					<?php }
 	}	
 	}
 	}
