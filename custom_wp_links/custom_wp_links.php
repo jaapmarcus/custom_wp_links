@@ -121,7 +121,6 @@ class Custom_WP_links
 ?>
 
 			<div class="wp-page-nav" role="navigation">
-				<?php 					var_dump($option['categorylastlink']);?>
 					<?php if ($page > 1) {
 							?>
 					<a class="previouspostslink" rel="prev" aria-label="Previous Page" href="<?php echo $this ->create_link($page - 1); ?>"><?=$option['prevpage'];?></a>
